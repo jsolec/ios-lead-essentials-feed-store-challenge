@@ -12,20 +12,6 @@ class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
 //   Uncomment the test implementations one by one.
 // 	 Follow the process: Make the test pass, commit, and move to the next one.
 //
-
-    public class LocalFeedStore: FeedStore {
-        public func deleteCachedFeed(completion: @escaping LocalFeedStore.DeletionCompletion) {
-            
-        }
-        
-        public func insert(_ feed: [LocalFeedImage], timestamp: Date, completion: @escaping LocalFeedStore.InsertionCompletion) {
-            
-        }
-        
-        public func retrieve(completion: @escaping LocalFeedStore.RetrievalCompletion) {
-            completion(.empty)
-        }
-    }
     
 	func test_retrieve_deliversEmptyOnEmptyCache() {
 		let sut = makeSUT()
@@ -34,9 +20,9 @@ class FeedStoreChallengeTests: XCTestCase, FeedStoreSpecs {
 	}
 
 	func test_retrieve_hasNoSideEffectsOnEmptyCache() {
-//		let sut = makeSUT()
-//
-//		assertThatRetrieveHasNoSideEffectsOnEmptyCache(on: sut)
+		let sut = makeSUT()
+
+		assertThatRetrieveHasNoSideEffectsOnEmptyCache(on: sut)
 	}
 
 	func test_retrieve_deliversFoundValuesOnNonEmptyCache() {
